@@ -19,6 +19,8 @@ public class ModItems {
             TestMod.LOGGER.info("Registering Mod Items for" + TestMod.MOD_ID);
         }
 
-        ItemGroupEvents.ModifyEntries();
+         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+        entries.add(PINK_GARNET);
+    });
 
 }
