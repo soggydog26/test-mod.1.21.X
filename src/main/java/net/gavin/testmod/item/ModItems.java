@@ -1,4 +1,5 @@
 package net.gavin.testmod.item;
+
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.gavin.testmod.TestMod;
 import net.minecraft.item.Item;
@@ -9,18 +10,18 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-        public static final Item PINK_GARNET = registerItem("pink_garnet", new Item(new Item.Settings()));
+    public static final Item PINK_GARNET = registerItem("pink_garnet", new Item(new Item.Settings()));
 
-        private static Item registerItem(String name, Item item) {
-            return Registry.register(Registries.ITEM, Identifier.of(TestMod.MOD_ID, name), item);
-        }
+    private static Item registerItem(String name, Item item) {
+        return Registry.register(Registries.ITEM, Identifier.of(TestMod.MOD_ID, name), item);
+    }
 
-        public static void registerModItems() {
-            TestMod.LOGGER.info("Registering Mod Items for" + TestMod.MOD_ID);
-        }
+    public static void registerModItems() {
 
-         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
-        entries.add(PINK_GARNET);
-    });
+        TestMod.LOGGER.info("Registering Mod Items for " + TestMod.MOD_ID);
 
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(fabricItemGroupEntries -> {
+            fabricItemGroupEntries.add(PINK_GARNET);
+        });
+    }
 }
